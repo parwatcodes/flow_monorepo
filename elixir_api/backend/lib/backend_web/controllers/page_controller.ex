@@ -6,4 +6,8 @@ defmodule BackendWeb.PageController do
     # so skip the default app layout.
     render(conn, :home, layout: false)
   end
+
+  def index(conn, _params) do
+    json(conn,  %{message: "Welcome to the Backend API"})
+  end
 end

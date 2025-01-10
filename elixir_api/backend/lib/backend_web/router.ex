@@ -1,4 +1,5 @@
 defmodule BackendWeb.Router do
+  alias DialyxirVendored.Project
   alias Hex.API.User
   use BackendWeb, :router
 
@@ -25,22 +26,26 @@ defmodule BackendWeb.Router do
   scope "/api", BackendWeb do
     pipe_through(:api)
 
+    get("/", PageController, :index)
+
     # Project routes
-    scope "/projects", ProjectController do
-      get("/", :getAllProjects)
-      get("/:id", :getProject)
-      post("/", :createProject)
-      put("/:id", :updateProject)
-      delete("/:id", :deleteProject)
+    scope "/projects" do
+      get("/",  ProjectController, :getAllProjects)
+      get("/:id", ProjectController, :getProject)
+      post("/", ProjectController, :createProject)
+      put("/:id", ProjectController, :updateProject)
+      delete("/:id", ProjectController, :deleteProject)
+
+      get("/static-error/:id", ProjectController, :staticError)
     end
 
     # User routes
-    scope "/users", UserController do
-      get("/", :getAllUsers)
-      get("/:id", :getUser)
-      post("/", :createUser)
-      put("/:id", :updateUser)
-      delete("/:id", :deleteUser)
+    scope "/users" do
+      get("/", UserController, :getAllUsers)
+      get("/:id", UserController, :getUser)
+      post("/", UserController, :createUser)
+      put("/:id", UserController, :updateUser)
+      delete("/:id", UserController, :deleteUser)
     end
   end
 

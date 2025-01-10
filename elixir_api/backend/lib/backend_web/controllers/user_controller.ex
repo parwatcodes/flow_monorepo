@@ -1,33 +1,33 @@
-defmodule BackendWeb.ProjectController do
+def BackendWeb.UserController do
   use BackendWeb, :controller
 
-  def getAllProjects(conn, _params) do
-    json(conn, %{message: "List of projects", data: [], status: "success"})
+  def getAllUsers(conn, _params) do
+    json(conn, %{message: "List of users", data: [], status: "success"})
   end
 
-  def getProject(conn, %{"id" => id}) do
+  def getUser(conn, %{"id" => id}) do
     json(conn, %{message: "Welcome to the Backend API", id: id})
   end
 
-  def createProject(conn, _params) do
+  def createUser(conn, _params) do
     json(conn, %{message: "Welcome to the Backend API"})
   end
 
-  def updateProject(conn, %{"id" => id}) do
+  def updateUser(conn, %{"id" => id}) do
     json(conn, %{message: "Welcome to the Backend API", id: id})
   end
 
-  def deleteProject(conn, %{"id" => id}) do
+  def deleteUser(conn, %{"id" => id}) do
     json(conn, %{message: "Welcome to the Backend API", id: id})
   end
 
   def staticError(conn, %{"id" => id}) do
     json(conn, %{
-      message: "Invalid project ID",
+      message: "Invalid user ID",
       status: "error",
       error: %{
         code: 404,
-        message: "The provided #{id} project ID does not exist."
+        message: "The provided #{id} user ID does not exist."
       }
     })
   end
