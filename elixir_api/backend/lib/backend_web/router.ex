@@ -47,6 +47,15 @@ defmodule BackendWeb.Router do
       put("/:id", UserController, :updateUser)
       delete("/:id", UserController, :deleteUser)
     end
+
+    # Task routes
+    scope "/tasks" do
+      get("/", TaskController, :getAllTasks)
+      get("/:id", TaskController, :getTask)
+      post("/", TaskController, :createTask)
+      put("/:id", TaskController, :updateTask)
+      delete("/:id", TaskController, :deleteTask)
+    end
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
